@@ -10,8 +10,8 @@ done
 echo "$(date) - Database is up - executing command"
 exec "$@"
 
-# npx prisma db push
-# npx prisma generate
-# (npx prisma studio&) 
+npx prisma db push
+npx prisma generate
+(npx prisma studio&) 
 npm run start:dev
 yes

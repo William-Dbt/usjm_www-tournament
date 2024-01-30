@@ -18,7 +18,7 @@ logdatabase:
 	docker logs -f db
 
 logback:
-	docker logs -f node-app 
+	docker logs -f backend 
 
 logfront:
 	docker logs -f frontend

@@ -5,8 +5,8 @@ import { AuthService } from './auth.service';
 export class AuthController {
 	constructor(private authservice: AuthService) {}
 
-	@Get("signin")
-	async signIn(@Body("email") email: string ) {
-		return this.authservice.signIn(email, "");
+	@Get("createUser")
+	async createUser(@Body("email") email: string ) { // TODO: Replace with DTO
+		return this.authservice.createUser(email, "");
 	}
 }

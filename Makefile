@@ -1,7 +1,7 @@
 docker:
 	docker-compose up --build -d
-	open http://localhost:5555
-	open http://localhost:4000
+	# open http://localhost:5555
+	# open http://localhost:4000
 
 build:
 	docker-compose build

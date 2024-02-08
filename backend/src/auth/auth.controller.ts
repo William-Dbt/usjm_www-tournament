@@ -1,13 +1,26 @@
-import { Body, Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateUserDto } from './dto';
+import { SignInDto, LogInDto } from './dto';
+import { Public } from '../custom/PublicDecorator';
 
 @Controller('auth')
 export class AuthController {
 	constructor(private authservice: AuthService) {}
 
-	@Get("createUser")
-	async createUser(@Body() userInfos: CreateUserDto ) {
-		return this.authservice.createUser(userInfos);
+	@Public()
+	@Post("signIn")
+	async signIn(@Body() signInInfos: SignInDto) {
+		return this.authservice.signIn(signInInfos);
+	}
+
+	@Public()
+	@Post("logIn")
+	async logIn(@Body() logInInfos: LogInDto) {
+		return this.authservice.logIn(logInInfos);
+	}
+
+	@Get('profile')
+	async getProfile(@Request() req) {
+		return req.user;
 	}
 }

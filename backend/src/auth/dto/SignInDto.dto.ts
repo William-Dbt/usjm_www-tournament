@@ -19,7 +19,7 @@ export class SignInDto {
 	@MinLength(6)
 	@MaxLength(14)
 	@Matches(/\d+/g, {
-		message: "password must contains at least one number"
+		message: "le mot de passe doit contenir au moins un chiffre"
 	})
 	password: string
 }

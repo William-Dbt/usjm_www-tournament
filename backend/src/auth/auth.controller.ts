@@ -8,13 +8,14 @@ export class AuthController {
 	constructor(private authservice: AuthService) {}
 
 	@Public()
-	@Post("signIn")
+	@Post('signIn')
 	async signIn(@Body() signInInfos: SignInDto) {
+		console.log(signInInfos);
 		return this.authservice.signIn(signInInfos);
 	}
 
 	@Public()
-	@Post("logIn")
+	@Post('logIn')
 	async logIn(@Body() logInInfos: LogInDto) {
 		return this.authservice.logIn(logInInfos);
 	}

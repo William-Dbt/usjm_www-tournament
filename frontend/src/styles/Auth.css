@@ -7,6 +7,7 @@ body {
 	align-items: center;
 
 	background-image: url("../images/auth-background.jpg");
+	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -14,7 +15,7 @@ body {
 /* Signup & Login pages style */
 .container {
 	width: 400px;
-	height: 380px;
+	height: auto;
 	padding: 40px;
 	
 	display: flex;
@@ -23,14 +24,16 @@ body {
 	align-items: center;
 	text-align: center;
 
-	border: 1px solid white;
 	border-radius: 20px;
+	border: 1px solid white;
+
 	backdrop-filter: blur(10px) brightness(100%);
 }
 
 h1 {
 	color: white;
-	padding-bottom: 10%;
+	padding-bottom: 6%;
+	font-family: "Impact";
 }
 
 form {
@@ -40,15 +43,14 @@ form {
 input {
 	width: 100%;
 	height: 40px;
-
 	margin-bottom: 2%;
 	padding-left: 3%;
-	border: 1px solid white;
+	box-sizing: border-box;
+
 	color: white;
+	border: 1px solid white;
 	border-radius: 8px;
 	background: transparent;
-
-	box-sizing: border-box;
 }
 
 input:focus {
@@ -60,18 +62,27 @@ input::placeholder {
 	color: white;
 }
 
-input[type="submit"] {
+button {
+	width: 100%;
+	height: 40px;
 	margin-top: 10px;
+	margin-bottom: 2%;
+	padding-left: 3%;
 
+	color: rgb(68, 68, 68);
 	background: whitesmoke;
 	box-shadow: 0px 2px 0 grey, 2px 4px 6px grey;
+
+	border: 1px solid white;
+	border-radius: 8px;
+
 	font-weight: 900;
-	color: rgb(68, 68, 68);
 	letter-spacing: 1px;
+
 	transition: all 150ms linear;
 }
 
-input[type="submit"]:hover {
+button:hover {
 	cursor: pointer;
 
 	background: rgba(245, 245, 245, 0.400);
@@ -89,5 +100,9 @@ small {
 }
 
 .link {
-	color: lightgray;
+	color: rgb(57, 57, 57);
+}
+
+.link:hover {
+	color: rgb(0, 0, 0);
 }

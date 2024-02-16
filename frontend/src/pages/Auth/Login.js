@@ -7,7 +7,7 @@ function Login() {
 			<form>
 				<input input="email" name="email" placeholder="Adresse email" />
 				<input input="password" name="password" placeholder="Mot de passe" />
-				<input type="submit" name="login" value="Se connecter" />
+				<button type="button">Se connecter</button>
 			</form>
 			<small>Pas encore inscrit ? <Link className="link" to="/signup">Créer un compte</Link></small>
 		</div>

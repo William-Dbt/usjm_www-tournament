@@ -11,7 +11,7 @@ function Auth(props) {
 		formToShow = <Login />
 
 	return (
-		<div className="auth-page">
+		<div>
 			{formToShow}
 		</div>
 	);

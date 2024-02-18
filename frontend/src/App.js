@@ -7,7 +7,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={ <Auth /> } />
+				<Route path="/" element={ <Auth signup={false} /> } />
 				<Route path="/login" element={ <Auth signup={false} /> } />
 				<Route path="/signup" element={ <Auth signup={true} /> } />
 				<Route path="*" element={ <NoPage /> } />

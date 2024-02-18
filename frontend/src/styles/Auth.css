@@ -13,7 +13,7 @@ body {
 }
 
 /* Signup & Login pages style */
-.container {
+.formWindow {
 	width: 400px;
 	height: auto;
 	padding: 40px;
@@ -22,12 +22,11 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
 
 	border-radius: 20px;
 	border: 1px solid white;
 
-	backdrop-filter: blur(10px) brightness(100%);
+	backdrop-filter: blur(10px) brightness(80%);
 }
 
 h1 {
@@ -43,7 +42,8 @@ form {
 input {
 	width: 100%;
 	height: 40px;
-	margin-bottom: 2%;
+	margin-bottom: 1%;
+	margin-top: 1%;
 	padding-left: 3%;
 	box-sizing: border-box;
 
@@ -60,6 +60,25 @@ input:focus {
 
 input::placeholder {
 	color: white;
+}
+
+.fieldError {
+	text-align: left;
+	margin-left: 4%;
+
+	color: red;
+}
+
+.passwordErrorMessages {
+	display: flex;
+	flex-direction: column;
+
+	color: red;
+}
+
+.ulPasswordErrors {
+	margin-top: 0%;
+	list-style-type: "- ";
 }
 
 input[type="submit"] {
@@ -96,8 +115,4 @@ small {
 
 .link:hover {
 	color: rgb(184, 255, 248);
-}
-
-.fieldError {
-	color: red;
 }

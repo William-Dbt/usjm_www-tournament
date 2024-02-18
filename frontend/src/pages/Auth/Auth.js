@@ -1,18 +1,11 @@
-import Signup from "./Signup";
-import Login from "./Login";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 import "../../styles/Auth.css";
 
 function Auth(props) {
-	let formToShow;
-
-	if (props.signup === true)
-		formToShow = <Signup />
-	else
-		formToShow = <Login />
-
 	return (
-		<div>
-			{formToShow}
+		<div className="formWindow">
+			{props.signup === true ? <Signup /> : <Login />}
 		</div>
 	);
 }

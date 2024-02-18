@@ -44,7 +44,7 @@ function Signup() {
 	// has complete all fields to register without errors
 	// It will call the API to register the user in the db
 	function finishSubmitForm() {
-		axios.post(`http://localhost:3000/auth/signIn`, {
+		axios.post(`${process.env.REACT_APP_WEBSITE_URL_LOCAL}/auth/signIn`, {
 			firstName: inputFields.firstName.trim(' '),
 			lastName: inputFields.lastName.trim(' '),
 			email: inputFields.email.trim(' '),

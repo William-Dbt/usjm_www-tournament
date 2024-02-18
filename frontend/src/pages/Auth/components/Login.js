@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function Login() {
@@ -8,6 +9,7 @@ function Login() {
 		email: (location.state) ? location.state.email : "",
 		password: ""
 	});
+	const [error, setError] = useState("");
 
 	// Form's event
 	function handleChange(event) {
@@ -17,20 +19,33 @@ function Login() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
+		axios.post(`${process.env.REACT_APP_WEBSITE_URL_LOCAL}/auth/logIn`, inputFields)
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch(() => {
+				setError("Email ou mot de passe incorrect");
+			});
 	}
 	// ------------------------------
 
 	return (
 		<>
 			<h1>Se connecter</h1>
+			{error ? <span className="registrationError">{error}</span> : null}
 			<form onSubmit={handleSubmit}>
-				<input input="email"
+				<input type="email"
 					name="email"
 					placeholder="Adresse email"
 					value={inputFields.email}
 					onChange={handleChange}
 				/>
-				<input input="password" name="password" placeholder="Mot de passe" />
+				<input type="password"
+					name="password"
+					placeholder="Mot de passe"
+					value={inputFields.password}
+					onChange={handleChange}
+				/>
 				<input type="submit" name="login" value="Se connecter" />
 			</form>
 			<small>Pas encore inscrit ? <Link className="link" to="/signup">Créer un compte</Link></small>

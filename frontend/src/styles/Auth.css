@@ -35,15 +35,6 @@ h1 {
 	font-family: "Impact";
 }
 
-.registrationError {
-	margin-top: 0px !important;
-	margin-bottom: 5px;
-	margin-inline: 8%;
-
-	color: red;
-	font-size: smaller;
-}
-
 form {
 	width: 100%;
 }
@@ -69,25 +60,6 @@ input:focus {
 
 input::placeholder {
 	color: white;
-}
-
-.fieldError {
-	text-align: left;
-	margin-left: 4%;
-
-	color: red;
-}
-
-.passwordErrorMessages {
-	display: flex;
-	flex-direction: column;
-
-	color: red;
-}
-
-.ulPasswordErrors {
-	margin-top: 0%;
-	list-style-type: "- ";
 }
 
 input[type="submit"] {
@@ -124,4 +96,46 @@ small {
 
 .link:hover {
 	color: rgb(184, 255, 248);
+}
+
+/* Login page */
+
+/* Signup page */
+.loginMessage {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-bottom: 5%;
+	margin-inline: 8%;
+
+	color: greenyellow;
+	font-size: smaller;
+}
+
+.registrationError {
+	margin-top: 0px !important;
+	margin-bottom: 5px;
+	margin-inline: 8%;
+
+	color: red;
+	font-size: smaller;
+}
+
+.fieldError {
+	text-align: left;
+	margin-left: 4%;
+
+	color: red;
+}
+
+.passwordErrorMessages {
+	display: flex;
+	flex-direction: column;
+
+	color: red;
+}
+
+.ulPasswordErrors {
+	margin-top: 0%;
+	list-style-type: "- ";
 }

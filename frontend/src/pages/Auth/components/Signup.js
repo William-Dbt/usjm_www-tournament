@@ -13,7 +13,10 @@ function Signup() {
 	const [errors, setErrors] = useState({ password: [] });
 	const [submitForm, setSubmitForm] = useState(false);
 
+	const [showLoginMessage, setShowLoginMessage] = useState(false);
 	const [registrationError, setRegistrationError] = useState("");
+
+	const [timerToNavigate, setTimerToNavigate] = useState(-1);
 
 	const navigate = useNavigate();
 
@@ -22,7 +25,20 @@ function Signup() {
 	useEffect(() => {
 		if ((Object.keys(errors).length === 1 && errors.password.length === 0) && submitForm)
 			finishSubmitForm();
-	}, [errors, errors.password, submitForm]);
+
+		// eslint-disable-next-line
+	}, [errors, submitForm]);
+
+	useEffect(() => {
+		if (timerToNavigate > 0)
+			setTimeout(() => setTimerToNavigate(timerToNavigate - 1), 1000);
+		else if (timerToNavigate === 0) {
+			navigate('/login', {
+				state: { email: inputFields.email.trim(' ') }
+			});
+		}
+		// eslint-disable-next-line
+	}, [timerToNavigate]);
 
 	// This function is called by useEffect() when the client
 	// has complete all fields to register without errors
@@ -34,7 +50,10 @@ function Signup() {
 			email: inputFields.email.trim(' '),
 			password: inputFields.password.trim(' ')
 		})
-		.then (() => { navigate('/login'); })
+		.then (() => {
+			setShowLoginMessage(true);
+			setTimerToNavigate(4);
+		})
 		.catch(error => { setRegistrationError(error.response.data.message); })
 	}
 
@@ -75,6 +94,15 @@ function Signup() {
 		return arr_errors;
 	}
 
+	function showRegisterLoginMessage() {
+		return (
+			<div className="loginMessage">
+				<span>Votre compte a bien été crée !</span>
+				<span>Vous serez redirigé vers la page de connexion dans quelques secondes...</span>
+			</div>
+		);
+	}
+
 	function showPasswordErrorMessages(arrErrorMessages) {
 		return (
 			<div className="passwordErrorMessages">
@@ -96,6 +124,9 @@ function Signup() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
+		if (submitForm)
+			return ;
+
 		setErrors(validateValues(inputFields));
 		if (Object.keys(errors).length === 1 && errors.password.length === 0)
 			setSubmitForm(true);
@@ -108,6 +139,7 @@ function Signup() {
 			{registrationError ? (
 				<span className="registrationError">⚠️ {registrationError} ⚠️</span>
 			) : null}
+			{showLoginMessage ? showRegisterLoginMessage() : null}
 			<form onSubmit={handleSubmit}>
 				<input type="text"
 					name="firstName"

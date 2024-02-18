@@ -10,7 +10,6 @@ export class AuthController {
 	@Public()
 	@Post('signIn')
 	async signIn(@Body() signInInfos: SignInDto) {
-		console.log(signInInfos);
 		return this.authservice.signIn(signInInfos);
 	}
 

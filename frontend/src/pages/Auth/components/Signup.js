@@ -13,7 +13,9 @@ function Signup() {
 	const [errors, setErrors] = useState({ password: [] });
 	const [submitForm, setSubmitForm] = useState(false);
 
-	// const navigate = useNavigate();
+	const [registrationError, setRegistrationError] = useState("");
+
+	const navigate = useNavigate();
 
 	// Check every time errors object is modifying if we can register the client
 	// The errors object is modified only when the button to register is clicked
@@ -26,25 +28,14 @@ function Signup() {
 	// has complete all fields to register without errors
 	// It will call the API to register the user in the db
 	function finishSubmitForm() {
-		let registerError;
-
 		axios.post(`http://localhost:3000/auth/signIn`, {
 			firstName: inputFields.firstName.trim(' '),
 			lastName: inputFields.lastName.trim(' '),
 			email: inputFields.email.trim(' '),
 			password: inputFields.password.trim(' ')
 		})
-		.catch(error => { registerError = error; })
-
-		// Reset variables
-		setInputFields({
-			firstName: "",
-			lastName: "",
-			email: "",
-			password: ""
-		});
-		setSubmitForm(false);
-		// navigate('/login');
+		.then (() => { navigate('/login'); })
+		.catch(error => { setRegistrationError(error.response.data.message); })
 	}
 
 	// Function to check if every field is well-formated to create the client
@@ -114,7 +105,9 @@ function Signup() {
 	return (
 		<>
 			<h1>S'inscrire</h1>
-			<small>TODO: Do warning infos on personal datas</small>
+			{registrationError ? (
+				<span className="registrationError">⚠️ {registrationError} ⚠️</span>
+			) : null}
 			<form onSubmit={handleSubmit}>
 				<input type="text"
 					name="firstName"

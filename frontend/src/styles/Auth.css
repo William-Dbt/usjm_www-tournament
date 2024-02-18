@@ -31,8 +31,17 @@ body {
 
 h1 {
 	color: white;
-	padding-bottom: 6%;
+	padding-bottom: 3%;
 	font-family: "Impact";
+}
+
+.registrationError {
+	margin-top: 0px !important;
+	margin-bottom: 5px;
+	margin-inline: 8%;
+
+	color: red;
+	font-size: smaller;
 }
 
 form {

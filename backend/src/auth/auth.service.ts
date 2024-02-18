@@ -16,7 +16,7 @@ export class AuthService {
 		const isUserExists = await this.userService.getUserByMail(userInfos.email);
 		if (isUserExists !== null)
 			throw new HttpException(
-				"An account with the mail " + userInfos.email + " already exists.",
+				"Un compte sous l'email " + userInfos.email + " existe déjà",
 				HttpStatus.FOUND
 			);
 		

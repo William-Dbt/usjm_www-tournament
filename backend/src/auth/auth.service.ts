@@ -39,11 +39,18 @@ export class AuthService {
 		const user = await this.userService.getUserByMail(logInInfos.email);
 		if (user === null)
 			throw new HttpException("Incorrect identifiers", HttpStatus.NOT_FOUND);
-		else
+		else {
 			if (!await argon.verify(user.password, logInInfos.password))
 				throw new HttpException("Incorrect identifiers", HttpStatus.UNAUTHORIZED);
+		}
 
 		const payload = { sub: user.id, email: user.email };
-		return { access_token: await this.jwtService.signAsync(payload) };
+		const accessToken = await this.jwtService.signAsync(payload);
+
+		await this.prisma.user.update({
+			where: { id: user.id },
+			data: { accessToken: accessToken }
+		});
+		return { access_token: accessToken };
 	}
 }

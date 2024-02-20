@@ -25,6 +25,8 @@ function Signup() {
 	useEffect(() => {
 		if ((Object.keys(errors).length === 1 && errors.password.length === 0) && submitForm)
 			finishSubmitForm();
+		else
+			setSubmitForm(false);
 
 		// eslint-disable-next-line
 	}, [errors, submitForm]);
@@ -51,10 +53,16 @@ function Signup() {
 			password: inputFields.password.trim(' ')
 		})
 		.then (() => {
+			if (registrationError)
+				setRegistrationError("");
+
 			setShowLoginMessage(true);
 			setTimerToNavigate(4);
 		})
-		.catch(error => { setRegistrationError(error.response.data.message); })
+		.catch(error => {
+			setRegistrationError(error.response.data.message);
+			setSubmitForm(false);
+		})
 	}
 
 	// Function to check if every field is well-formated to create the client
@@ -124,12 +132,8 @@ function Signup() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		if (submitForm)
-			return ;
-
 		setErrors(validateValues(inputFields));
-		if (Object.keys(errors).length === 1 && errors.password.length === 0)
-			setSubmitForm(true);
+		setSubmitForm(true);
 	}
 	// -----
 

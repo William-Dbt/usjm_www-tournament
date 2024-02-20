@@ -23,4 +23,6 @@ export class AuthController {
 	async getProfile(@Request() req) {
 		return req.user;
 	}
+
+	// TODO: Implement GetMe to check if token still available and call this function in the front to check if the user's token still available
 }

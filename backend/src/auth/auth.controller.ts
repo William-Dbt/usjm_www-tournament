@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Post, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignInDto, LogInDto } from './dto';
 import { Public } from '../custom/PublicDecorator';
@@ -24,5 +24,9 @@ export class AuthController {
 		return req.user;
 	}
 
-	// TODO: Implement GetMe to check if token still available and call this function in the front to check if the user's token still available
+	@Public()
+	@Get('getMe')
+	async getMe(@Headers("authorization") authorizationHeader: string) {
+		return this.authservice.getMe(authorizationHeader);
+	}
 }

@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import getMe from "../../../utils/getMe";
 
 function Login() {
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const [inputFields, setInputFields] = useState({
 		email: (location.state) ? location.state.email : "",
@@ -19,13 +21,17 @@ function Login() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		axios.post(`${process.env.REACT_APP_WEBSITE_URL_LOCAL}/auth/logIn`, inputFields)
-			.then((res) => {
-				sessionStorage.setItem("access_token", res.data.access_token);
-			})
-			.catch(() => {
-				setError("Email ou mot de passe incorrect");
-			});
+		axios.post(
+			`${process.env.REACT_APP_WEBSITE_URL_LOCAL}/auth/logIn`,
+			inputFields
+		)
+		.then(async (res) => {
+			sessionStorage.setItem("access_token", res.data.access_token);
+			navigate("/profile");
+		})
+		.catch(() => {
+			setError("Email ou mot de passe incorrect");
+		});
 	}
 	// ------------------------------
 

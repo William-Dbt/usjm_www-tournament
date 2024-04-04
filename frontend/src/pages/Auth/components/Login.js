@@ -1,11 +1,22 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import getMe from "../../../utils/getMe";
 
 function Login() {
 	const location = useLocation();
 	const navigate = useNavigate();
+
+	const fetchUserDatas = async () => {
+		const user = await getMe();
+		if (user)
+			navigate("/profile");
+	};
+
+	useEffect(() => {
+		fetchUserDatas();
+		// eslint-disable-next-line
+	}, []);
 
 	const [inputFields, setInputFields] = useState({
 		email: (location.state) ? location.state.email : "",

@@ -4,7 +4,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { UserService } from '../user/user.service';
 import { SignInDto, LogInDto } from "./dto";
-import { User } from "@prisma/client";
+import { User, UserRole } from "@prisma/client";
 import { JwtService } from "@nestjs/jwt";
 import { JwtPayload } from "./types/jwtPayload.type";
 
@@ -23,12 +23,14 @@ export class AuthService {
 			);
 		
 		const hashedPassword = await argon.hash(userInfos.password);
+		const isFirstUser = await this.prisma.user.findMany();
 		const newUser = await this.prisma.user.create({
 			data: {
 				firstName: userInfos.firstName,
 				lastName: userInfos.lastName,
 				email: userInfos.email,
-				password: hashedPassword
+				password: hashedPassword,
+				role: isFirstUser.length > 0 ? UserRole.TEACHER : UserRole.OWNER
 			}
 		});
 		if (newUser !== null)

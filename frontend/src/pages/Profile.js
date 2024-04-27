@@ -23,6 +23,7 @@ function Profile() {
 	return (
 		<>
 			<p>{userData.email}</p>
+			<p>{userData.role}</p>
 		</>
 	);
 }

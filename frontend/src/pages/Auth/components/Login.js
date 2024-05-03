@@ -7,6 +7,8 @@ function Login() {
 	const location = useLocation();
 	const navigate = useNavigate();
 
+	// Check if the user is already logged in when component is loaded
+	// Redirect in his profile page if he is
 	const fetchUserDatas = async () => {
 		const user = await getMe();
 		if (user)

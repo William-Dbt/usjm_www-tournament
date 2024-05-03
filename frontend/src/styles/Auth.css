@@ -1,15 +1,10 @@
 /* Auth page style */
-body {
+.formPage {
 	height: 100vh;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	/* background-image: url("../images/background.jpg"); */
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
 }
 
 /* Signup & Login pages style */
@@ -20,7 +15,6 @@ body {
 	
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 
 	border-radius: 20px;

@@ -31,6 +31,7 @@ function Signup() {
 		// eslint-disable-next-line
 	}, [errors, submitForm]);
 
+	// TODO: show popup and redirect immediatly instead of timer
 	useEffect(() => {
 		if (timerToNavigate > 0)
 			setTimeout(() => setTimerToNavigate(timerToNavigate - 1), 1000);

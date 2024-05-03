@@ -7,11 +7,8 @@ function Admin() {
 
 	const fetchUserDatas = async () => {
 		const user = await getMe();
-		if (!user)
-			navigate("/login");
-
-		if (user.role && user.role == 'TEACHER')
-			navigate("/profile");
+		if (user && user.role && user.role === 'TEACHER')
+			navigate("/profile"); // TODO: popup Unauthrorized page
 	};
 
 	useEffect(() => {

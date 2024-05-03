@@ -4,9 +4,12 @@ import "../../styles/Auth.css";
 
 function Auth(props) {
 	return (
-		<div className="formWindow">
-			{props.signup === true ? <Signup /> : <Login />}
+		<div className="formPage">
+			<div className="formWindow">
+				{props.signup === true ? <Signup /> : <Login />}
+			</div>
 		</div>
+		
 	);
 }
 

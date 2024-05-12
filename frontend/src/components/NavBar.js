@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import getMe from "../utils/getMe";
 import "../styles/NavBar.css"
 
@@ -36,10 +36,10 @@ function NavBar() {
 
 	useEffect(() => {
 		fetchUserDatas();
-	}, []); // TODO: Do timer instead of only on component loaded (every 5 / 10 seconds)
+	}, []);
 	// ------------------------------
 
-	function handleClick() {
+	function handleLogoutClick() {
 		sessionStorage.removeItem("access_token");
 		navigate("/login");
 	}
@@ -48,11 +48,12 @@ function NavBar() {
 		<div className="navBar">
 			{userData.firstName === undefined | null ? <p>toto</p> : <p>{userData.firstName}, {userData.email}</p>}
 			{location.pathname}
-			<button onClick={handleClick}>
-				logout
-			</button>
+			{(sessionStorage.getItem("access_token") !== null)
+				? <button onClick={handleLogoutClick}>logout</button>
+				: <></>
+			}
 		</div>
 	);
 }
 
-export default NavBar
+export default NavBar;

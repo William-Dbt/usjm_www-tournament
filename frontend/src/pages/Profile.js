@@ -22,8 +22,10 @@ function Profile() {
 
 	return (
 		<>
-			<p>{userData.email}</p>
-			<p>{userData.role}</p>
+			<p>firstName: {userData.firstName}</p>
+			<p>lastName: {userData.lastName}</p>
+			<p>email: {userData.email}</p>
+			<p>role: {userData.role}</p>
 		</>
 	);
 }

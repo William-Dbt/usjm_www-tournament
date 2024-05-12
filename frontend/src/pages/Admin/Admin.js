@@ -1,14 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import getMe from "../../utils/getMe";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import UsersList from "./components/UsersList";
 
 function Admin() {
 	const navigate = useNavigate();
+	const [user, setUser] = useState({});
 
 	const fetchUserDatas = async () => {
 		const user = await getMe();
 		if (user && user.role && user.role === 'TEACHER')
 			navigate("/profile"); // TODO: popup Unauthrorized page
+
+		setUser(user);
 	};
 
 	useEffect(() => {
@@ -16,9 +20,9 @@ function Admin() {
 	}, []);
 
 	return (
-		<div>
-			<p>Toto le rigolo haha</p>
-		</div>
+		<>
+			<UsersList user={user} />
+		</>
 	);
 }
 

@@ -68,7 +68,6 @@ export class AuthService {
 	}
 
 	async verifyToken(authorizationHeader: string): Promise<JwtPayload> {
-		// Remove "Baerer " string
 		const token = authorizationHeader.substring(7);
 		try {
 			const decodedToken = jwt.verify(

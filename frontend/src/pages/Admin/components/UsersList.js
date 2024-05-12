@@ -8,7 +8,7 @@ function UsersList(props) {
 		await API.get("/user/usersList", props.user.id )
 			.then((res) => {
 				setUsersList(res);
-			})
+			});
 	};
 
 	useEffect(() => {

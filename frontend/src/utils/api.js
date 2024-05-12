@@ -6,7 +6,7 @@ const axiosAPI = axios.create({
 
 const apiRequest = (method, url, request) => {
 	const headers = {
-		authorization: `Baerer ${sessionStorage.getItem("access_token")}`
+		authorization: `Bearer ${sessionStorage.getItem("access_token")}`
 	};
 	return axiosAPI({
 		method,

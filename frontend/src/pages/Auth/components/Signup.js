@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import isStringEmpty from "../../../utils/isStringEmpty";
+import API from "../../../utils/api";
 
 function Signup() {
 	const [inputFields, setInputFields] = useState({
@@ -47,13 +47,13 @@ function Signup() {
 	// has complete all fields to register without errors
 	// It will call the API to register the user in the db
 	function finishSubmitForm() {
-		axios.post(`${process.env.REACT_APP_WEBSITE_URL_LOCAL}/auth/signIn`, {
+		API.post(`/auth/signIn`, {
 			firstName: inputFields.firstName.trim(' '),
 			lastName: inputFields.lastName.trim(' '),
 			email: inputFields.email.trim(' '),
 			password: inputFields.password.trim(' ')
 		})
-		.then (() => {
+		.then(() => {
 			if (registrationError)
 				setRegistrationError("");
 

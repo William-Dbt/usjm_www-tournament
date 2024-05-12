@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import getMe from "../../../utils/getMe";
+import API from "../../../utils/api";
 
 function Login() {
 	const location = useLocation();
@@ -34,12 +34,12 @@ function Login() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		axios.post(
-			`${process.env.REACT_APP_WEBSITE_URL_LOCAL}/auth/logIn`,
+		API.post(
+			"/auth/logIn",
 			inputFields
 		)
-		.then(async (res) => {
-			sessionStorage.setItem("access_token", res.data.access_token);
+		.then((res) => {
+			sessionStorage.setItem("access_token", res.access_token);
 			navigate("/profile");
 		})
 		.catch(() => {

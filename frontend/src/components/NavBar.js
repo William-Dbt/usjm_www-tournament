@@ -36,6 +36,7 @@ function NavBar() {
 
 	useEffect(() => {
 		fetchUserDatas();
+		// eslint-disable-next-line
 	}, []);
 	// ------------------------------
 
@@ -48,9 +49,10 @@ function NavBar() {
 		<div className="navBar">
 			{userData.firstName === undefined | null ? <p>toto</p> : <p>{userData.firstName}, {userData.email}</p>}
 			{location.pathname}
-			{(sessionStorage.getItem("access_token") !== null)
-				? <button onClick={handleLogoutClick}>logout</button>
-				: <></>
+			<Link to="/admin">Admin</Link>
+			{
+				(sessionStorage.getItem("access_token") !== null)
+					? <button onClick={handleLogoutClick}>logout</button> : <></>
 			}
 		</div>
 	);

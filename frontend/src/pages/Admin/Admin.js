@@ -17,6 +17,7 @@ function Admin() {
 
 	useEffect(() => {
 		fetchUserDatas();
+		// eslint-disable-next-line
 	}, []);
 
 	return (

@@ -24,13 +24,13 @@ const apiRequest = (method, url, request) => {
 
 const get = (url, request = {}) => apiRequest("get", url, request);
 
-const deleteRequest = (url, request) => apiRequest("delete", url, request);
+const deleteRequest = (url, request = {}) => apiRequest("delete", url, request);
 
 const post = (url, request = {}) => apiRequest("post", url, request);
 
-const put = (url, request) => apiRequest("put", url, request);
+const put = (url, request = {}) => apiRequest("put", url, request);
 
-const patch = (url, request) => apiRequest("patch", url, request);
+const patch = (url, request = {}) => apiRequest("patch", url, request);
 
 const API = {
 	get,

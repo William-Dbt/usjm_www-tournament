@@ -4,22 +4,22 @@ const axiosAPI = axios.create({
 	baseURL: process.env.REACT_APP_WEBSITE_URL_LOCAL
 });
 
-const apiRequest = (method, url, request) => {
+const apiRequest = async (method, url, request) => {
 	const headers = {
-		authorization: `Bearer ${sessionStorage.getItem("access_token")}`
+		authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+		'Content-Type': 'application/json; charset=utf-8'
 	};
-	return axiosAPI({
-		method,
-		url,
-		data: request,
-		headers
-	})
-	.then((res) => {
-		return Promise.resolve(res.data);
-	})
-	.catch((err) => {
-		return Promise.reject(err);
-	})
+	try {
+		const res = await axiosAPI({
+			method,
+			url,
+			data: request,
+			headers
+		});
+		return await Promise.resolve(res.data);
+	} catch (err) {
+		return await Promise.reject(err);
+	}
 };
 
 const get = (url, request = {}) => apiRequest("get", url, request);

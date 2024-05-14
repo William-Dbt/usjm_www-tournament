@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import API from "../../../utils/api";
+import UserContainer from "./UserContainer";
 
 function UsersList(props) {
-	const {user} = props;
+	const { user } = props;
 	const [usersList, setUsersList] = useState([]);
 
 	const fetchUsersList = async () => {
-		await API.post('/user/machin', { 'toto':'titi' });
-		await API.get('/user/usersList', { "toto": 'titi' })
+		await API.post('/user/usersList', { exceptId: user.id })
 			.then((res) => {
-				console.log(res);
 				setUsersList(res);
 			})
 			.catch((err) => {
@@ -26,11 +25,11 @@ function UsersList(props) {
 	}, [user]);
 
 	return (
-		<>
-			{usersList.map((user) => {
-				return <p key={user.firstName}>{user.firstName} {user.lastName}</p>;
+		<div className="listContainer">
+			{usersList.map((userToShow) => {
+				return (<UserContainer user={user} userToShow={userToShow} />);
 			})}
-		</>
+		</div>
 	);
 }
 

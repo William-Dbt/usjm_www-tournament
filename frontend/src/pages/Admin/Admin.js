@@ -11,6 +11,8 @@ function Admin() {
 		const user = await getMe();
 		if (user && user.role && user.role === 'TEACHER')
 			navigate("/profile"); // TODO: popup Unauthrorized page
+		else if (!user)
+			navigate("/login");
 
 		setUser(user);
 	};

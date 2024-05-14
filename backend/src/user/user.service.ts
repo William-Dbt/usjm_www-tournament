@@ -20,13 +20,11 @@ export class UserService {
 
 	async getUsersList(exceptId: number): Promise<User[] | null> {
 		return (await this.prisma.user.findMany({
-			// where: { NOT: { id: Number(exceptId) }}
-			orderBy: [{
-				firstName: 'asc'
-			},
-			{
-				lastName: 'asc'
-			}]
+			where: { NOT: { id: Number(exceptId) }},
+			orderBy: [
+				{ firstName: 'asc' },
+				{ lastName: 'asc' }
+			]
 		}));
 	}
 }

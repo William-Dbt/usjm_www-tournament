@@ -1,0 +1,31 @@
+/* UsersList Component */
+.listContainer {
+	display: flex;
+	flex-direction: column;
+
+	margin-top: 100px;
+}
+/* -------------------- */
+
+/* UserContainer Component */
+.userContainer {
+	display: flex;
+	justify-content: space-between;
+
+	padding-inline: 20px;
+	margin-bottom: 5px;
+
+	border: 2px solid black;
+}
+
+/* .names {
+}
+
+.role {
+	margin: auto;
+} */
+
+.manageButtons {
+	display: flex;
+}
+/* -------------------- */

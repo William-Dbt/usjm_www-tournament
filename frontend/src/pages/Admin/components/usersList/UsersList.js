@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import API from "../../../utils/api";
+import API from "../../../../utils/api";
 import UserContainer from "./UserContainer";
 
 function UsersList(props) {

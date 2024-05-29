@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../styles/Admin.css"
 
 function UserContainer(props) {
 	const { user, userToShow } = props;

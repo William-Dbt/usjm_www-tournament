@@ -1,9 +1,28 @@
+/* Admin Component */
+.adminComponent {
+	display: flex;
+	
+	margin-top: 20px;
+	gap: 50px;
+
+	border: 2px solid black;
+}
+
+.adminNav {
+	border: 2px solid red;
+}
+
+.selectedContent {
+	width: 100%;
+
+	margin: 50px;
+}
+/* -------------------- */
+
 /* UsersList Component */
 .listContainer {
 	display: flex;
 	flex-direction: column;
-
-	margin-top: 100px;
 }
 /* -------------------- */
 
@@ -17,13 +36,6 @@
 
 	border: 2px solid black;
 }
-
-/* .names {
-}
-
-.role {
-	margin: auto;
-} */
 
 .manageButtons {
 	display: flex;
